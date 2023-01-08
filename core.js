@@ -10,7 +10,7 @@ function searchContainerById(json, id) {
 
 	return null;
 }
-function searchContainerByComapreFnArray(json, key, compareFns) {
+function searchContainerByCompareFnArray(json, key, compareFns) {
 	/*
 	This function searches
 	*/
@@ -43,3 +43,5 @@ function searchContainerByCompareFn(json, key, compareFn) {
   
 	return result;
   }
+var core = {searchContainerByCompareFn: searchContainerByCompareFn, searchContainerByCompareFnArray: searchContainerByCompareFnArray, searchContainerById: searchContainerById}
+module.exports = core;
