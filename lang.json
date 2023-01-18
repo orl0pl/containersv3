@@ -2,6 +2,9 @@
     "en": {
         "home": "Home",
         "search": "Search",
+        "search.key": "Key to search",
+        "search.byfunction": "Search using a function",
+        "search.advanced": "Advanced search",
         "logout": "Log out",
         "share.code": "Share Code",
         "container.code": "CODE",
