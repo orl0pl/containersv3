@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1><%= l.t('home') %></h1>
+        <input style="flex-grow: 0 !important" type="text" placeholder="<%= l.t('search.key') %>">
+        <input type="text" placeholder="<%= l.t('search.byfunction') %>">
+        <button class="cool"><%= l.t('search') %></button>
+        <button class="cool"><%= l.t('search.advanced') %></button>
+        <div class="links">
+            <span><%= l.t('logout') %></span>
+            <span><%= l.t('share.code') %></span>
+        </div>
+    </div>
+    <table>
+        <% if (JSON.stringify(object.attr)=='{}' ){ var t=l.t('noattr') %>
+            <% var t_split=t.split(" ") %>
+            <tr>
+            <td>
+                <i class=" color500">
+                <%= t_split[0] %></i>
+                    </td>
+                    <td>
+                        <i class="color500">
+                            <%= t_split[1] %>
+                        </i>
+                    </td>
+                    </tr>
+                    <% } %>
+
+    </table>
+    <div class="grid-container">
+        <% object.containers.forEach(function(c){ %>
+            <div class="box">
+                <div class="top">
+                    <div class="text">
+                        <span class="title">
+                            <%= c.attr.name ? c.attr.name : l.t('container') %>
+                        </span>
+                        <span class="desc">
+                            <%= c.attr.desc ? c.attr.desc : l.t('container.nodesc') %>
+                        </span>
+                    </div>
+                    <span><%= l.t('container.code') %></span>
+                </div>
+                <div class="actions">
+                    <span><%= l.t('action.add') %></span>
+                    <span><%= l.t('action.move') %></span>
+                    <span><%= l.t('action.delete') %></span>
+                    <span><%= l.t('action.edit') %></span>
+                </div>
+                <div class="cool table">
+                    <table>
+                        <% if (JSON.stringify(c.attr)=='{}' ){ var t="Brak atrybutów" %>
+                            <% var t_split=t.split(" ") %>
+                            <tr>
+                            <td>
+                                <i class=" color500">
+                                <%= t_split[0] %></i>
+                                    </td>
+                                    <td>
+                                        <i class="color500">
+                                            <%= t_split[1] %>
+                                        </i>
+                                    </td>
+                                    </tr>
+                                    <% } %>
+                                        <% for (const [key, value] of Object.entries(c.attr)) { %>
+                                            <tr>
+                                                <td>
+                                                    <%= key %>
+                                                </td>
+                                                <td>
+                                                    <%= value %>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                    </table>
+                </div>
+            </div>
+
+            <% }); %>
+            <div class="box">
+               <div class="add">+</div>
+            </div>
+    </div>
+    <script>var s=document.querySelector('body .header input');s.setAttribute('size',s.getAttribute('placeholder').length-4);</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,222 @@
+:root {
+    --font: #000;
+    --font500: #888;
+    --font800: #444;
+    --font200: #ccc;
+    --font100: #eee;
+    --theme: #0cc;
+    --theme800: #0ccc;
+    --theme500: #0cc8;
+    --theme200: #0cc3;
+    --background: #fff;
+    --scroll-style: -webkit-linear-gradient(45deg,
+            rgba(255, 255, 255, .2) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, .2) 50%,
+            rgba(255, 255, 255, .2) 75%,
+            transparent 75%,
+            transparent);
+}
+/*:root {
+    --font: #fff;
+    --font500: #888;
+    --font800: #aaa;
+    --font200: #444;
+    --font100: #222;
+    --theme: #33f;
+    --theme500: #33f8;
+    --theme200: #33f3;
+    --background: #000;
+    --scroll-style: -webkit-linear-gradient(45deg,
+            rgba(0, 0, 0, .2) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(0, 0, 0, .2) 50%,
+            rgba(0, 0, 0, .2) 75%,
+            transparent 75%,
+            transparent);
+}
+*/
+.color500 {
+    color: var(--font500);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color: var(--font);
+    background-color: var(--background);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    font-family: Verdana, Arial, sans-serif;
+}
+
+h1 {
+    margin: 0px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    align-items: stretch;
+    gap: 8px;
+}
+
+.box {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+td,
+th {
+    border: 1px solid var(--theme200);
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: var(--theme200);
+}
+
+/*.box table tr:nth-child(n + 4) {
+    display: none;
+    margin: -99999px 0 0 0;
+}
+
+table:hover tr:nth-child(n + 4) {
+    display: table-row;
+    margin: 0px;
+}*/
+.cool::-webkit-scrollbar-thumb {
+    background-color: var(--theme) !important;
+    background-image: -webkit-linear-gradient(45deg,
+    rgba(255, 255, 255, .2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, .2) 50%,
+    rgba(255, 255, 255, .2) 75%,
+    transparent 75%,
+    transparent);
+}
+
+.box .table::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+/* Track */
+.box .table::-webkit-scrollbar-track {
+    border: var(--font100) 1px solid;
+    border-radius: 0em 1em 1em 0em;
+}
+
+/* Handle */
+.box .table::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 0em 1em 1em 0em;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.box .table {
+    max-height: 10em;
+    overflow-y: scroll;
+    overflow-y: auto;
+    border-radius: 0.5em 0em 0em 0.5em;
+}
+
+.box .top .title {
+    font-size: 160%;
+    font-weight: bold;
+}
+
+.box .top .desc {
+    font-style: italic;
+    color: var(--font800);
+}
+
+.box .top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.box .top .text {
+    display: flex;
+    flex-direction: column;
+}
+
+.box .actions {
+    display: flex;
+    justify-content: space-around;
+    margin: 8px 8px;
+}
+
+.box .actions span {
+    color: var(--font800);
+    text-decoration: underline dotted var(--theme);
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+    flex: 0 0 33%;
+
+}
+
+.header .links span {
+    max-width: max-content;
+}
+
+.header input {
+    all: unset;
+    background-color: var(--theme200);
+    border: 1px solid var(--theme);
+    border-radius: 1em;
+    height: 2em;
+    padding: 0px 1em;
+    flex-grow: 1;
+}
+.header button.cool {
+    all: unset;
+    background-color: var(--theme800);
+    border: 1px solid var(--theme);
+    border-radius: 1em;
+    height: 2em;
+    padding: 0px 1em;
+    min-width: 0px;
+}
+.header button.cool:hover {
+    all: unset;
+    background-color: var(--theme);
+    border: 1px solid var(--theme);
+    border-radius: 1em;
+    height: 2em;
+    padding: 0px 1em;
+    min-width: 0px;
+}
+.header button.cool:active {
+    all: unset;
+    background-color: var(--theme);
+    border: none;
+    outline: 2px solid var(--font500);
+    border-radius: 1em;
+    height: 2em;
+    padding: 0px 1em;
+    min-width: 0px;
+}

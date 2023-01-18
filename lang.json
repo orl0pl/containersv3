@@ -1,0 +1,33 @@
+{
+    "en": {
+        "home": "Home",
+        "search": "Search",
+        "logout": "Log out",
+        "share.code": "Share Code",
+        "container.code": "CODE",
+        "container": "Container",
+        "container.nodesc": "No description",
+        "container.noattr": "No description",
+        "action.add": "Add",
+        "action.edit": "Edit",
+        "action.delete": "Delete",
+        "action.move": "Move"
+    },
+    "pl": {
+        "home": "Dom",
+        "search": "Szukaj",
+        "search.key": "Klucz do szukania",
+        "search.byfunction": "Szukaj za pomocą funkcji",
+        "search.advanced": "Zaawanowane Szukanie",
+        "logout": "Wyloguj się",
+        "share.code": "Udostępnij kod",
+        "container.code": "KOD",
+        "container": "Pojemnik",
+        "container.nodesc": "Brak opisu",
+        "container.noattr": "No description",
+        "action.add": "Dodaj",
+        "action.edit": "Edytuj",
+        "action.delete": "Usuń",
+        "action.move": "Przemieść"
+    }
+}

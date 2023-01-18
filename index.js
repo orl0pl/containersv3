@@ -1,16 +1,31 @@
 const express = require('express')
+const lang = require('./lang.json')
 const app = express()
 const port = 1237
 const { v4: uuidv4 } = require('uuid');
-
+var cookieParser = require('cookie-parser')
 var jp = require('jsonpath');
 var fs = require('fs');
 var db = JSON.parse(fs.readFileSync('db.json'))
 var core = require('./core');
-app.use(express.json())
-function greaterThan3(name) {
-	return typeof name === "string" && name.length > 3;
+app.set('view engine', 'ejs');
+app.use(express.json());
+app.use(cookieParser());
+class Translate {
+	constructor(locale, strings) {
+		this.locale = locale;
+		this.strings = strings;
+	}
+	t(key) {
+		var r;
+		this.strings[this.locale][key] !== undefined ? r = this.strings[this.locale][key] : r = key;
+		return r;
+	}
+	setLocale(locale) {
+		this.locale = locale;
+	}
 }
+
 function getPathById(json, id, path = []) {
 	if (!json || !id) return [];
 
@@ -40,7 +55,26 @@ function getKeyPathById(json, id, key, path = []) {
 
 app.get('/', (req, res) => {
 	//TODO: LOGIN PAGE ==> ADDS SCRIPT TO SAVE KEY COOKIE AND RECIDECT TO HOME PAGE
-	res.status(401).send({ 'error': 'Use Key' })
+	var l = new Translate('en', lang)
+	var sl = req.acceptsLanguages('pl', 'en')
+	sl == false ? l.setLocale('en') : l.setLocale(sl)
+	console.log(sl)
+	const object = db.find(obj => obj.key === req.cookies.skey);
+	if (object !== undefined) {
+		res.render('pages/home', { title: object.key, object: object, l: l})
+	}
+	else {
+		res.send({ 'error': 'Wrong Key' })
+	}
+})
+app.get('/style.css', (req, res) => {
+	res.sendFile(`${__dirname}/views/pages/style.css`)
+})
+app.get('/qr-scanner.min.js', (req, res) => {
+	res.sendFile(`${__dirname}/qr-scanner.min.js`)
+})
+app.get('/qr-scanner-worker.min.js', (req, res) => {
+	res.sendFile(`${__dirname}/qr-scanner-worker.min.js`)
 })
 app.get('/:akey', (req, res) => {
 	const object = db.find(obj => obj.key === req.params.akey);

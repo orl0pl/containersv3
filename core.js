@@ -14,7 +14,12 @@ function addContainer(json /*DB Data*/, parentId /*uuid of the parent container*
 	//Add container
 	if (!json || !parentId || !newContainer) return json;
 
-	if (json.id === parentId) {
+
+	if(parentId === "home"){
+		json.containers.push(newContainer);
+		return json;
+	}
+	else if (json.id === parentId) {
 		json.containers.push(newContainer);
 		return json;
 	}
